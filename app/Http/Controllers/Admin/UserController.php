@@ -20,7 +20,7 @@ class UserController extends Controller
         //return view('admin.user.index',compact('user'));
     	$tot=\DB::table("user")->count();
 
-        $data=\DB::table("user")->orderBy("id","desc")->paginate(2);
+        $data=\DB::table("user")->orderBy("id","desc")->paginate(10);
 
             // simplePaginate  简化的分页效果
             // paginate  正常分页效果

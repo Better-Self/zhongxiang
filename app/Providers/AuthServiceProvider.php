@@ -24,11 +24,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
 	{
 	     $this->registerPolicies();
-	 
-	     foreach (\App\Permission::all() as $permission) {
-	         Gate::define($permission['name'], function ($user) use ($permission) {
-	             return in_array($user['role_id'], array_column($permission->Role->toArray(), 'id'));
-	         });
-	     }
+
+	    if(\request()->getPathInfo("pathInfo")=="/admin"){
+            foreach (\App\Permission::all() as $permission) {
+                Gate::define($permission['name'], function ($user) use ($permission) {
+                    return in_array($user['role_id'], array_column($permission->Role->toArray(), 'id'));
+                });
+            }
+        }
+
 	}
 }

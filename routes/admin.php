@@ -40,6 +40,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'auth:admin']
 
     // 后台分类管理模块
     Route::resource('types','TypesController');
+    Route::resource('userList','UserListController');
+    Route::get('usersList/search','UserListController@search');
     Route::post('types/forum','TypesController@forumStore');
     Route::resource('pic','PicController');
     Route::resource('sys','SysController');

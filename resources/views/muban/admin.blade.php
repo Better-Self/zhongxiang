@@ -125,7 +125,7 @@
 			<dd>
 				<ul>
 					<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">待审核</a></li>
-					<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">用户列表</a></li>
+					<li><a data-href="/admin/user" data-title="图片管理" href="javascript:void(0)">用户列表</a></li>
 			</ul>
 		</dd>
 	</dl>@endcan

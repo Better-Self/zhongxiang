@@ -16,6 +16,8 @@ class IndexController extends Controller
 
     public function index(){
 
+
+
         $permission = \DB::table("permissions")->get()->toArray();
         foreach ($permission as $value){
             $data[]= $value->name;
