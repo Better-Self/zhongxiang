@@ -72,7 +72,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Members::class,
         ],
         'admins' => [
             'driver' => 'eloquent',
@@ -104,7 +104,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
+            'table' => 'uc_members',
             'expire' => 60,
         ],
     ],
