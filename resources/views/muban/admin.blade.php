@@ -98,7 +98,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 城市管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					
+					<li><a data-href="/admin/city" data-title="城市管理" href="javascript:void(0)">城市管理</a></li>
 					<li><a data-href="/admin/types" data-title="资讯管理" href="javascript:void(0)">栏目管理</a></li>
 					<li><a data-href="/admin/types" data-title="资讯管理" href="javascript:void(0)">导航管理</a></li>
 					<li><a data-href="/admin/types" data-title="资讯管理" href="javascript:void(0)">联系管理</a></li>
@@ -125,7 +125,7 @@
 			<dd>
 				<ul>
 					<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">待审核</a></li>
-					<li><a data-href="/admin/user" data-title="图片管理" href="javascript:void(0)">用户列表</a></li>
+					<li><a data-href="/admin/usersList/search" data-title="用户列表" href="javascript:void(0)">用户列表</a></li>
 			</ul>
 		</dd>
 	</dl>@endcan

@@ -48,11 +48,11 @@
                 </select>
 
 
-                </div>
             </div>
+        </div>
 
         </div>
-         <br/> <br/> <br/>
+        <br/> <br/> <br/>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <input class="btn btn-primary radius" type="submit" onclick="add()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -60,8 +60,6 @@
         </div>
     </form>
 </article>
-
-<!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/luntan/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/luntan/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="/luntan/static/h-ui/js/H-ui.min.js"></script>
@@ -72,66 +70,40 @@
 <script type="text/javascript" src="/luntan/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="/luntan/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="/luntan/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
 <script type="text/javascript">
 
 
     //添加的处理操作
     function  add(){
 
-        //表单序列化
-       // str=$("#form-member-add").serialize();
-        var province=$("#province option:selected");
-        var city=$("#city option:selected");
-        var district=$("#district option:selected");
-        alert(province.val());
-        alert(city.val());
-        alert(district.val());
+         province=$("#province option:selected");
+         city=$("#city option:selected");
+         district=$("#district option:selected");
 
-        $.post('/admin/user',{'str':str,'_token':'{{csrf_token()}}'},function(data){
+        $.ajax({
+            type : "post",  //提交方式
+            url : "/admin/city",
+            data : {
+                "province" : province.val(),
+                "city" : city.val(),
+                "district" : district.val(),
+                "_token":'{{csrf_token()}}'
+            },//数据，这里使用的是Json格式进行传输
+            success : function(data) {//返回数据根据结果进行相应的处理
 
-            if(data==1){
-                layer.msg('添加成功!',{icon:1,time:1000});
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.$('.btn-refresh').click();
-                parent.layer.close(index);
-            }else if(data){
-                var str = '';
-                if(data.name){
+                if(data==1){
 
-                    str="<div class='Huialert Huialert-info'><i class='Hui-iconfont'>&#xe6a6;</i>"+data.name+"</div>";
-                }else{
-                    str="<div class='Huialert Huialert-info'><i class='Hui-iconfont'>&#xe6a6;</i>用户名输入正确</div>";
+                    layer.msg('添加成功!',{icon:1,time:1000});
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.$('.btn-refresh').click();
+                    parent.layer.close(index);
                 }
-
-                $("#userinfo").html(str);
-                if(data.pass){
-
-                    str="<div class='Huialert Huialert-info'><i class='Hui-iconfont'>&#xe6a6;</i>"+data.pass+"</div>";
-                }else{
-                    str="<div class='Huialert Huialert-info'><i class='Hui-iconfont'>&#xe6a6;</i>密码输入正确</div>";
-                }
-
-                $("#passinfo").html(str);
-                //密码提示信息
-
-            }else{
-                alert("插入失败");
             }
-
         });
 
     }
-    $(function(){
-        $('.skin-minimal input').iCheck({
-            checkboxClass: 'icheckbox-blue',
-            radioClass: 'iradio-blue',
-            increaseArea: '20%'
-        });
-
-
-    });
 </script>
-<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
 
